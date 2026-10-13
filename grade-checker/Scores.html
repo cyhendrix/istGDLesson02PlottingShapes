@@ -159,12 +159,27 @@
     }
   
 .lookup-form{max-width:520px;margin:auto}.lookup-form label{display:block;text-align:left;font-weight:bold;margin:12px 0 6px}.lookup-form input{width:100%;font:inherit;padding:12px;border:2px solid var(--purple);border-radius:8px}.lookup-form button{border:0;font:inherit;cursor:pointer;margin-top:16px}.lookup-form button:disabled{opacity:.6;cursor:wait}#status{font-weight:bold}#status.error{color:#7f1d1d}[hidden]{display:none!important}.score-table{width:100%;border-collapse:collapse;background:white}.score-table th,.score-table td{padding:12px 8px;border-bottom:1px solid var(--border);text-align:left}.score-table th{color:var(--purple-dark)}.score-table .pass{color:#14532d;background:#dcfce7;font-weight:bold}.score-table .fail{color:#7f1d1d;background:#fee2e2;font-weight:bold}.score-table .missing{color:#65596d;font-style:italic}.averages{font-weight:bold;color:var(--purple-dark)}.half{overflow-x:auto}
-</style></head><body><header><h1>IST Game Design Practice-Lab Scores</h1><p>Check your recorded scores and see which practice labs you still need to complete.</p></header><main>
-<section class="score-link-area lookup-form"><h2>View My Scores</h2><p>Enter your Student ID number and last name to view your recorded scores.</p>
-<form id="lookup"><label for="studentId">Student ID</label><input id="studentId" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="30" required autocomplete="off"><label for="lastName">Last Name</label><input id="lastName" type="text" maxlength="100" required autocomplete="off"><button id="check" class="score-link" type="submit">View My Practice-Lab Scores</button></form><p id="status" role="status" aria-live="polite"></p></section>
+
+body{background:linear-gradient(110deg,#f7f1fa,#fffaf0)}
+header{max-width:900px;width:92%;margin:7px auto 20px;padding:20px 24px 24px;background:#53227c;border-bottom:7px solid #f4c542;border-radius:18px;box-shadow:0 10px 28px rgba(53,16,79,.12)}
+header h1{font-size:44px;margin:0 0 3px}header p{font-size:16px}
+main{max-width:900px;width:92%;margin:0 auto 40px}
+.lookup-form{max-width:none;margin:0;padding:18px 22px 20px;text-align:left;background:white;border:2px solid #ddcce8;border-radius:16px;box-shadow:0 9px 24px rgba(53,16,79,.10)}
+.lookup-form h2{font-size:24px;margin:0 0 16px;color:#53227c}
+.lookup-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lookup-form label{font-size:17px;margin:0 0 6px;color:#17121d}
+.lookup-form input{height:54px;border:2px solid #53227c;border-radius:10px;padding:12px 14px;font-weight:700}
+.lookup-form input::placeholder{color:#777}
+.lookup-form button{margin-top:18px;padding:13px 20px;background:#53227c;border-radius:10px;font-size:17px;font-weight:800}
+.lookup-form .lookup-note{margin:12px 0 0;font-size:14px;color:#62536d;font-weight:normal}
+#status:empty{display:none}#status{margin:12px 0 0}#results{margin-top:24px}
+@media(max-width:600px){header h1{font-size:30px}.lookup-fields{grid-template-columns:1fr}}
+</style></head><body><header><h1>Practice Lab Grade Checker</h1><p>Enter your information to view your individual Game Design practice-lab scores.</p></header><main>
+<section class="score-link-area lookup-form"><h2>Find My Scores</h2>
+<form id="lookup"><div class="lookup-fields"><div><label for="studentId">Student ID</label><input placeholder="Enter your Student ID" id="studentId" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="30" required autocomplete="off"></div><div><label for="lastName">Last Name</label><input placeholder="Enter your last name" id="lastName" type="text" maxlength="100" required autocomplete="off"></div></div><button id="check" class="score-link" type="submit">View My Scores</button></form><p class="lookup-note">Only the student matching both entries will be displayed. Last-name capitalization does not matter.</p><p id="status" role="status" aria-live="polite"></p></section>
 <div id="results" hidden><section class="intro"><h2 id="student"></h2><p id="completed"></p><p class="averages" id="averages"></p><p>These are your highest recorded scores. Missing labs count as 0 in the half averages.</p></section>
 <div class="halves"><section class="half"><h2>1st Half Practice Labs</h2><div id="first"></div></section><section class="half"><h2>2nd Half Practice Labs</h2><div id="second"></div></section></div></div>
-<section class="score-link-area"><a class="score-link" href="https://cyhendrix.github.io/istGDLesson02PlottingShapes/practice-labs.html">Return to Practice Labs</a></section></main><footer>Fitzgerald High School College and Career Academy • Intro to Software Technology</footer>
+</main>
 <script>
 const form=document.getElementById('lookup'),button=document.getElementById('check'),status=document.getElementById('status');
 function renderScores(target,labs){
