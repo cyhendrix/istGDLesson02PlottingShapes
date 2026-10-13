@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IST Game Design Practice Labs</title>
+  <style>
+    :root {
+      --purple: #4f2170;
+      --purple-dark: #35104f;
+      --gold: #f4c542;
+      --cream: #fffaf0;
+      --ink: #17121d;
+      --card: #ffffff;
+      --border: #d8c8e3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(135deg, #f7f0fb, var(--cream));
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    header {
+      padding: 36px 20px 30px;
+      color: white;
+      text-align: center;
+      background: var(--purple);
+      border-bottom: 8px solid var(--gold);
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+    }
+    header p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+    main {
+      width: min(1050px, 92%);
+      margin: 30px auto 48px;
+    }
+    .intro {
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      background: white;
+      border-left: 7px solid var(--gold);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(53,16,79,.1);
+    }
+    .halves {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .half {
+      padding: 18px;
+      background: rgba(255,255,255,.58);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(53,16,79,.08);
+    }
+    .half h2 {
+      margin: -18px -18px 18px;
+      padding: 15px 18px;
+      color: white;
+      background: var(--purple);
+      border-bottom: 6px solid var(--gold);
+      border-radius: 14px 14px 0 0;
+      font-size: 1.45rem;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .lab {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-height: 104px;
+      padding: 17px;
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(53,16,79,.08);
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .lab:hover, .lab:focus {
+      transform: translateY(-2px);
+      border-color: var(--purple);
+      box-shadow: 0 7px 18px rgba(53,16,79,.16);
+      outline: none;
+    }
+    .number {
+      display: grid;
+      flex: 0 0 52px;
+      height: 52px;
+      place-items: center;
+      color: white;
+      background: var(--purple);
+      border: 4px solid var(--gold);
+      border-radius: 50%;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .lab strong {
+      display: block;
+      color: var(--purple-dark);
+      font-size: 1.08rem;
+    }
+    .lab span:last-child {
+      display: block;
+      margin-top: 3px;
+      color: #4e4654;
+      font-size: .94rem;
+    }
+    .score-link-area {
+      margin-top: 26px;
+      padding: 22px;
+      text-align: center;
+      background: var(--cream);
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(53,16,79,.1);
+    }
+    .score-link-area h2 {
+      margin: 0 0 7px;
+      color: var(--purple-dark);
+      font-size: 1.4rem;
+    }
+    .score-link-area p {
+      margin: 0 0 15px;
+    }
+    .score-link {
+      display: inline-block;
+      padding: 14px 24px;
+      color: white;
+      background: var(--purple);
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .score-link:hover, .score-link:focus {
+      background: var(--purple-dark);
+      text-decoration: underline;
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    footer {
+      padding: 20px;
+      color: white;
+      text-align: center;
+      background: var(--purple-dark);
+    }
+    @media (max-width: 760px) {
+      .halves { grid-template-columns: 1fr; }
+      header { padding-top: 28px; }
+    }
+  .upcoming:hover{transform:none;border-color:var(--border);box-shadow:0 4px 12px rgba(53,16,79,.08)}
+</style>
+</head>
+<body>
+  <header>
+    <h1>IST Game Design Practice Labs</h1>
+    <p>Select the lesson you need. Complete every activity, check your final grade, and submit your results.</p>
+  </header>
+
+  <main>
+    <div class="intro">
+      <strong>Before you begin:</strong> Enter your first name, last name, and class block exactly as your teacher instructed. You may repeat a lab to improve your score.
+    </div>
+
+    <div class="halves">
+      <section class="half">
+        <h2>1st Half Practice Labs</h2>
+        <div class="grid">
+<a class="lab" href="https://cyhendrix.github.io/istGDLesson01ProgrammingforaPurpose/" target="_blank" rel="noopener"><span class="number">01</span><span><strong>Programming for a Purpose</strong><span>Designing for users and the problem-solving process</span></span></a>
+<a class="lab" href="https://cyhendrix.github.io/istGDLesson02PlottingShapes/" target="_blank" rel="noopener"><span class="number">02</span><span><strong>Plotting Shapes</strong><span>Coordinates, shape placement, color, and drawing order</span></span></a>
+<div class="lab upcoming"><span class="number">03</span><span><strong>Drawing in Game Lab</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">04</span><span><strong>Shapes and Parameters</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">05</span><span><strong>Variables</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">06</span><span><strong>Random Numbers</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">08</span><span><strong>Sprites</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">09</span><span><strong>Sprite Properties</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">10</span><span><strong>Text</strong><span>Coming Soon</span></span></div>
+</div>
+      </section>
+
+      <section class="half">
+        <h2>2nd Half Practice Labs</h2>
+        <div class="grid">
+<div class="lab upcoming"><span class="number">12</span><span><strong>The Draw Loop</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">13</span><span><strong>Sprite Movement</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">15</span><span><strong>Conditionals</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">16</span><span><strong>Keyboard Input</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">17</span><span><strong>Mouse Input</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">19</span><span><strong>Velocity</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">20</span><span><strong>Collision Detection</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">22</span><span><strong>Complex Sprite Movement</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">23</span><span><strong>Collisions</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming"><span class="number">25</span><span><strong>Functions</strong><span>Coming Soon</span></span></div>
+</div>
+      </section>
+    </div>
+    <section class="score-link-area">
+      <h2>Ready to Check Your Progress?</h2>
+      <p>View your recorded practice-lab scores and see which labs still need to be completed.</p>
+      <a class="score-link" href="scores.html" target="_blank" rel="noopener">View My Practice-Lab Scores</a>
+    </section>
+  </main>
+
+  <footer>Fitzgerald High School College and Career Academy • Intro to Software Technology</footer>
+</body>
+</html>
