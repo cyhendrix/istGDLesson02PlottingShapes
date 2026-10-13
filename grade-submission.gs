@@ -23,10 +23,11 @@ function gradeAttempt(p) {
   if (!config) throw new Error('This lesson is not supported yet.');
   if (!a || !a.identify || !a.apply || !a.debug) throw new Error('Answers are missing.');
   let points = 0, buildPoints = 0;
-  config.terms.forEach(function(term, i) { if (a.identify[i] === term) points++; });
+  const earned = {identify: 0, apply: 0, debug: 0};
+  config.terms.forEach(function(term, i) { if (a.identify[i] === term) { points++; earned.identify++; } });
   [ ['apply', config.apply], ['debug', config.debug] ].forEach(function(group) {
     group[1].forEach(function(answer, i) {
-      if (a[group[0]][i] !== undefined && String(a[group[0]][i]) === String(answer)) points++;
+      if (a[group[0]][i] !== undefined && String(a[group[0]][i]) === String(answer)) { points++; earned[group[0]]++; }
     });
   });
   if (config.points) {
@@ -42,11 +43,12 @@ function gradeAttempt(p) {
       throw new Error('Invalid process order.');
     if (a.order.join('|') === process.join('|')) buildPoints = 1;
   }
-  if (!['identify','apply','debug'].every(function(k) { return checks[k] === 2; }))
-    throw new Error('Finish every activity before submitting.');
-  const buildDone = checks.build === 2 ||
-    (config.points && checks.build === 1 && buildPoints === config.points.length);
-  if (!buildDone) throw new Error('Finish the Build activity before submitting.');
+  const possible = {identify: config.terms.length, apply: config.apply.length,
+    debug: config.debug.length, build: config.points ? config.points.length : 1};
+  earned.build = buildPoints;
+  if (!Object.keys(possible).every(function(k) {
+    return checks[k] === 2 || (checks[k] === 1 && earned[k] === possible[k]);
+  })) throw new Error('Finish every activity before submitting.');
   points += buildPoints;
   return {points: points, total: config.total, score: Math.round(points / config.total * 100)};
 }
