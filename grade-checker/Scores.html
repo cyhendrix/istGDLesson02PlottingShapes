@@ -1,0 +1,189 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_top"><title>IST Game Design Practice-Lab Scores</title><style>
+    :root {
+      --purple: #4f2170;
+      --purple-dark: #35104f;
+      --gold: #f4c542;
+      --cream: #fffaf0;
+      --ink: #17121d;
+      --card: #ffffff;
+      --border: #d8c8e3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(135deg, #f7f0fb, var(--cream));
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    header {
+      padding: 36px 20px 30px;
+      color: white;
+      text-align: center;
+      background: var(--purple);
+      border-bottom: 8px solid var(--gold);
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+    }
+    header p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+    main {
+      width: min(1050px, 92%);
+      margin: 30px auto 48px;
+    }
+    .intro {
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      background: white;
+      border-left: 7px solid var(--gold);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(53,16,79,.1);
+    }
+    .halves {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .half {
+      padding: 18px;
+      background: rgba(255,255,255,.58);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(53,16,79,.08);
+    }
+    .half h2 {
+      margin: -18px -18px 18px;
+      padding: 15px 18px;
+      color: white;
+      background: var(--purple);
+      border-bottom: 6px solid var(--gold);
+      border-radius: 14px 14px 0 0;
+      font-size: 1.45rem;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .lab {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-height: 104px;
+      padding: 17px;
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(53,16,79,.08);
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .lab:hover, .lab:focus {
+      transform: translateY(-2px);
+      border-color: var(--purple);
+      box-shadow: 0 7px 18px rgba(53,16,79,.16);
+      outline: none;
+    }
+    .number {
+      display: grid;
+      flex: 0 0 52px;
+      height: 52px;
+      place-items: center;
+      color: white;
+      background: var(--purple);
+      border: 4px solid var(--gold);
+      border-radius: 50%;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .lab strong {
+      display: block;
+      color: var(--purple-dark);
+      font-size: 1.08rem;
+    }
+    .lab span:last-child {
+      display: block;
+      margin-top: 3px;
+      color: #4e4654;
+      font-size: .94rem;
+    }
+    .score-link-area {
+      margin-top: 26px;
+      padding: 22px;
+      text-align: center;
+      background: var(--cream);
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(53,16,79,.1);
+    }
+    .score-link-area h2 {
+      margin: 0 0 7px;
+      color: var(--purple-dark);
+      font-size: 1.4rem;
+    }
+    .score-link-area p {
+      margin: 0 0 15px;
+    }
+    .score-link {
+      display: inline-block;
+      padding: 14px 24px;
+      color: white;
+      background: var(--purple);
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .score-link:hover, .score-link:focus {
+      background: var(--purple-dark);
+      text-decoration: underline;
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    footer {
+      padding: 20px;
+      color: white;
+      text-align: center;
+      background: var(--purple-dark);
+    }
+    @media (max-width: 760px) {
+      .halves { grid-template-columns: 1fr; }
+      header { padding-top: 28px; }
+    }
+  
+.lookup-form{max-width:520px;margin:auto}.lookup-form label{display:block;text-align:left;font-weight:bold;margin:12px 0 6px}.lookup-form input{width:100%;font:inherit;padding:12px;border:2px solid var(--purple);border-radius:8px}.lookup-form button{border:0;font:inherit;cursor:pointer;margin-top:16px}.lookup-form button:disabled{opacity:.6;cursor:wait}#status{font-weight:bold}#status.error{color:#7f1d1d}[hidden]{display:none!important}.score-table{width:100%;border-collapse:collapse;background:white}.score-table th,.score-table td{padding:12px 8px;border-bottom:1px solid var(--border);text-align:left}.score-table th{color:var(--purple-dark)}.score-table .pass{color:#14532d;background:#dcfce7;font-weight:bold}.score-table .fail{color:#7f1d1d;background:#fee2e2;font-weight:bold}.score-table .missing{color:#65596d;font-style:italic}.averages{font-weight:bold;color:var(--purple-dark)}.half{overflow-x:auto}
+</style></head><body><header><h1>IST Game Design Practice-Lab Scores</h1><p>Check your recorded scores and see which practice labs you still need to complete.</p></header><main>
+<section class="score-link-area lookup-form"><h2>View My Scores</h2><p>Sign in with your school Google account, then enter your Student ID.</p>
+<form id="lookup"><label for="studentId">Student ID</label><input id="studentId" type="text" maxlength="30" required autocomplete="off"><button id="check" class="score-link" type="submit">View My Practice-Lab Scores</button></form><p id="status" role="status" aria-live="polite"></p></section>
+<div id="results" hidden><section class="intro"><h2 id="student"></h2><p id="completed"></p><p class="averages" id="averages"></p><p>These are your highest recorded scores. Missing labs count as 0 in the half averages.</p></section>
+<div class="halves"><section class="half"><h2>1st Half Practice Labs</h2><div id="first"></div></section><section class="half"><h2>2nd Half Practice Labs</h2><div id="second"></div></section></div></div>
+<section class="score-link-area"><a class="score-link" href="https://cyhendrix.github.io/istGDLesson02PlottingShapes/practice-labs.html">Return to Practice Labs</a></section></main><footer>Fitzgerald High School College and Career Academy • Intro to Software Technology</footer>
+<script>
+const form=document.getElementById('lookup'),button=document.getElementById('check'),status=document.getElementById('status');
+function renderScores(target,labs){
+ const table=document.createElement('table');table.className='score-table';
+ const head=document.createElement('thead'),row=document.createElement('tr');
+ ['Lesson','Practice Lab','Score'].forEach(value=>{const th=document.createElement('th');th.scope='col';th.textContent=value;row.append(th)});head.append(row);table.append(head);
+ const body=document.createElement('tbody');
+ labs.forEach(lab=>{const row=document.createElement('tr');[lab.lesson,lab.title,lab.completed?lab.score+'%':'Not submitted'].forEach((value,i)=>{const td=document.createElement('td');td.textContent=value;if(i===2)td.className=!lab.completed?'missing':lab.score>=70?'pass':'fail';row.append(td)});body.append(row)});
+ table.append(body);document.getElementById(target).replaceChildren(table);
+}
+form.addEventListener('submit',event=>{
+ event.preventDefault();document.getElementById('results').hidden=true;document.getElementById('first').replaceChildren();document.getElementById('second').replaceChildren();
+ button.disabled=true;status.className='';status.textContent='Checking your recorded scores…';
+ google.script.run.withSuccessHandler(data=>{
+ button.disabled=false;status.textContent='';
+ document.getElementById('student').textContent=data.name+' • '+data.period;
+ document.getElementById('completed').textContent='Completed '+data.completed+' of 19 practice labs.';
+ document.getElementById('averages').textContent='First Half Average: '+data.firstAverage+'% • Second Half Average: '+data.secondAverage+'%';
+ renderScores('first',data.labs.filter(lab=>lab.half===1));renderScores('second',data.labs.filter(lab=>lab.half===2));document.getElementById('results').hidden=false;
+ }).withFailureHandler(error=>{button.disabled=false;status.className='error';status.textContent=error.message||'Unable to check scores. Please try again.'}).getMyScores(document.getElementById('studentId').value.trim());
+});
+</script></body></html>
