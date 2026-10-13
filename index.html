@@ -23,10 +23,16 @@ if(!state.choiceOrder.identify)state.choiceOrder.identify=shuffle(defs.map(x=>x[
 for(const [key,items] of [['apply',apply],['debug',debug]]){if(!state.choiceOrder[key])state.choiceOrder[key]={};items.forEach((q,i)=>{if(!state.choiceOrder[key][i])state.choiceOrder[key][i]=shuffle(q[1].map((_,j)=>j))})}
 state.attempts=Object.assign({identify:0,build:0,apply:0,debug:0},state.attempts||{});
 const save=()=>localStorage.setItem(STORE,JSON.stringify(state));
-const buildPassed=()=>state.attempts.build>0&&state.checked.build&&buildTasks.every((t,i)=>{const a=state.build[i];return a&&a.x===t.x&&a.y===t.y});
-const locked=key=>state.attempts[key]>=2||(key==='build'&&buildPassed());
-const checkedAll=()=>['identify','build','apply','debug'].every(k=>locked(k));
-function attemptsLabel(key){if(key==='build'&&buildPassed()&&state.attempts.build===1)return '1 of 2 checks used. Activity complete.';return locked(key)?'2 of 2 checks used. Answers locked. Continue to the next tab.':state.attempts[key]+' of 2 checks used. You have '+(2-state.attempts[key])+' remaining.'}
+const activityPassed=key=>{
+  if(!state.checked[key]||state.attempts[key]<1)return false;
+  if(key==='identify')return defs.every((d,i)=>state.identify[i]===d[0]);
+  if(key==='build')return buildTasks.every((t,i)=>{const a=state.build[i];return a&&a.x===t.x&&a.y===t.y});
+  const items=key==='apply'?apply:debug;
+  return items.every((q,i)=>state[key][i]!==undefined&&Number(state[key][i])===q[2]);
+};
+const locked=key=>state.attempts[key]>=2||activityPassed(key);
+const checkedAll=()=>['identify','build','apply','debug'].every(locked);
+function attemptsLabel(key){return locked(key)?state.attempts[key]+' of 2 checks used. Activity complete. Answers locked. Continue to the next tab.':state.attempts[key]+' of 2 checks used. You have '+(2-state.attempts[key])+' remaining.'}
 function syncChecks(){for(const [key,button] of [['identify','checkIdentify'],['build','checkOrder'],['apply','checkApply'],['debug','checkDebug']])document.getElementById(button).disabled=locked(key);}
 const pages=['student','identify','build','apply','debug','finish'];
 const label={student:'Student Info',identify:'Identify',build:'Build',apply:'Apply',debug:'Debug',finish:'Results'};
@@ -99,7 +105,7 @@ function updateActivitySummary(key){
   else{const items=key==='apply'?apply:debug;totalItems=items.length;wrong=items.filter((q,i)=>state[key][i]===undefined||Number(state[key][i])!==q[2]).length}
   p.className='feedback '+(wrong?'wrong':'correct');
   const result=wrong?wrong+' of '+totalItems+(key==='build'?' placements incorrect.':' answers incorrect.'):'✓ All answers are correct!';
-  const next=key==='build'&&buildPassed()?' Your placements are locked. Continue to Apply.':locked(key)?' Both checks have been used. Answers are locked. Continue to the next activity.':wrong?' Redo the incorrect answers, then click '+(key==='build'?'Check Placement':'Check Answers')+' again.':' Click '+(key==='build'?'Check Placement':'Check Answers')+' once more to finish this activity.';
+  const next=locked(key)?' Continue to the next activity.': ' Redo the incorrect answers, then click '+(key==='build'?'Check Placement':'Check Answers')+' again.';
   p.textContent=attemptsLabel(key)+' '+result+next;
 }
 function renderMultiple(key,questions,targetId){updateActivitySummary(key);let target=document.getElementById(targetId);target.replaceChildren();state.questionOrder[key].forEach((i,position)=>{let q=questions[i],box=document.createElement('div');box.className='question';let title=document.createElement('p');title.textContent=(position+1)+'. '+q[0];box.append(title);let choices=document.createElement('div');choices.className='choices';let feedback=document.createElement('p');feedback.className='feedback';state.choiceOrder[key][i].forEach(j=>{let lab=document.createElement('label');let input=document.createElement('input');input.type='radio';input.name=key+i;input.value=j;input.checked=state[key][i]===String(j);input.disabled=locked(key);if(state.checked[key]&&input.checked)lab.classList.add(j===q[2]?'answer-correct':'answer-wrong');input.onchange=()=>{state[key][i]=String(j);state.checked[key]=false;save();renderMultiple(key,questions,targetId)};lab.append(input,document.createTextNode(q[1][j]));choices.append(lab)});let v=state[key][i];feedback.textContent=state.checked[key]?(v!==undefined&&Number(v)===q[2]?'✓ Correct!':locked(key)?'✗ Incorrect. Answers are now locked.':'✗ Incorrect. Change your answer and check again.'):'';feedback.className='feedback '+(v!==undefined&&Number(v)===q[2]?'correct':'wrong');box.append(choices,feedback);target.append(box)})}
