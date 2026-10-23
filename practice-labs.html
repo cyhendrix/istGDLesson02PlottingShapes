@@ -186,26 +186,26 @@
 <a class="lab" href="https://cyhendrix.github.io/istGDLesson03DrawingwithGameLab/" target="_blank" rel="noopener"><span class="number">03</span><span><strong>Drawing in Game Lab</strong><span>Drawing commands, colors, code order, and debugging</span></span></a>
 <a class="lab" href="https://cyhendrix.github.io/istGDLesson04ShapesAndParameters/" target="_blank" rel="noopener"><span class="number">04</span><span><strong>Shapes and Parameters</strong><span>Shape size, position, backgrounds, and debugging</span></span></a>
 <a class="lab" href="https://cyhendrix.github.io/istGDLesson05Variables/" target="_blank" rel="noopener"><span class="number">05</span><span><strong>Variables</strong><span>Creating variables, camelCase, snake_case, and proper syntax</span></span></a>
-<div class="lab upcoming"><span class="number">06</span><span><strong>Random Numbers</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">08</span><span><strong>Sprites</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">09</span><span><strong>Sprite Properties</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">10</span><span><strong>Text</strong><span>Coming Soon</span></span></div>
+<a class="lab" href="https://cyhendrix.github.io/istGD06RandomNumbers/" target="_blank" rel="noopener"><span class="number">06</span><span><strong>Random Numbers</strong><span>Random ranges, stored values, and variable updates</span></span></a>
+<a class="lab" href="https://cyhendrix.github.io/istGDLesson08Sprites/" target="_blank" rel="noopener"><span class="number">08</span><span><strong>Sprites</strong><span>Creating sprites, assigning images, and drawing scenes</span></span></a>
+<a class="lab" href="https://cyhendrix.github.io/istGDLesson09SpriteProperties/" target="_blank" rel="noopener"><span class="number">09</span><span><strong>Sprite Properties</strong><span>Position, scale, rotation, and dot notation</span></span></a>
+<a class="lab" href="https://cyhendrix.github.io/istGDLesson10Text/" target="_blank" rel="noopener"><span class="number">10</span><span><strong>Text</strong><span>Messages, text size, color, and coordinates</span></span></a>
 </div>
       </section>
 
       <section class="half">
         <h2>2nd Half Practice Labs</h2>
         <div class="grid">
-<div class="lab upcoming"><span class="number">12</span><span><strong>The Draw Loop</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">13</span><span><strong>Sprite Movement</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">15</span><span><strong>Conditionals</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">16</span><span><strong>Keyboard Input</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">17</span><span><strong>Mouse Input</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">19</span><span><strong>Velocity</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">20</span><span><strong>Collision Detection</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">22</span><span><strong>Complex Sprite Movement</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">23</span><span><strong>Collisions</strong><span>Coming Soon</span></span></div>
-<div class="lab upcoming"><span class="number">25</span><span><strong>Functions</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson12TheDrawLoop/" data-summary="Animation frames, setup, and repeated drawing"><span class="number">12</span><span><strong>The Draw Loop</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson13SpriteMovement/" data-summary="Counter patterns, movement, and rotation"><span class="number">13</span><span><strong>Sprite Movement</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson15Conditionals/" data-summary="Boolean tests, comparisons, and if statements"><span class="number">15</span><span><strong>Conditionals</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson16KeyboardInput/" data-summary="Key presses and interactive sprite movement"><span class="number">16</span><span><strong>Keyboard Input</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson17MouseInput/" data-summary="Mouse presses, releases, visibility, and if/else"><span class="number">17</span><span><strong>Mouse Input</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson19Velocity/" data-summary="Horizontal and vertical velocity, rotation speed"><span class="number">19</span><span><strong>Velocity</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson20CollisionDetection/" data-summary="Touching sprites, colliders, and debugging"><span class="number">20</span><span><strong>Collision Detection</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson22ComplexSpriteMovement/" data-summary="Acceleration, gravity, and jumping"><span class="number">22</span><span><strong>Complex Sprite Movement</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson23Collisions/" data-summary="Stopping, pushing, bouncing, and sprite interactions"><span class="number">23</span><span><strong>Collisions</strong><span>Coming Soon</span></span></div>
+<div class="lab upcoming" data-lab-url="https://cyhendrix.github.io/istGDLesson25Functions/" data-summary="Defining, calling, and reusing named tasks"><span class="number">25</span><span><strong>Functions</strong><span>Coming Soon</span></span></div>
 </div>
       </section>
     </div>
@@ -217,5 +217,23 @@
   </main>
 
   <footer>Fitzgerald High School College and Career Academy • Intro to Software Technology</footer>
+<script>
+async function activatePublishedLabs(){
+  await Promise.allSettled(Array.from(document.querySelectorAll('[data-lab-url]')).map(async card=>{
+    try{
+      const url=new URL(card.dataset.labUrl,location.href);
+      if(url.origin!==location.origin)return;
+      const response=await fetch(url.href,{method:'HEAD',cache:'no-store',signal:AbortSignal.timeout(8000)});
+      if(!response.ok)return;
+      const link=document.createElement('a');
+      link.className='lab';link.href=url.href;link.target='_blank';link.rel='noopener';
+      while(card.firstChild)link.appendChild(card.firstChild);
+      link.querySelector('span:last-child > span').textContent=card.dataset.summary;
+      card.replaceWith(link);
+    }catch(error){/* Keep the Coming Soon card until the next visit. */}
+  }));
+}
+activatePublishedLabs();
+</script>
 </body>
 </html>
